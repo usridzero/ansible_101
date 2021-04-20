@@ -1,0 +1,126 @@
+
+vagrant --version
+pwd
+mkdir chapter2
+cd chapter2/
+vagrant init
+ll
+vagrant init usridzero/centos7
+rm Vagrantfile 
+vagrant init usridzero/centos7
+ll
+ll .vagrant/
+conde .
+code .
+vagrant up
+vagrant ssh
+vagrant ssh-config
+touch playbook.yml
+vagrant provision
+vi playbook.yml 
+vagrant provision
+htop
+vagrant provision
+vagrant destroy
+pwd
+cd ..
+cd git/
+git clone https://github.com/usridzero/ansible_101.git
+cd ansible_101/
+mv ../../chapter2 .
+ll
+git status
+exec bash
+cd
+vi .bashrc 
+exec bash
+vi .bashrc 
+exec bash
+cd git/
+cd ansible_101/
+cd 
+cat .bashrc 
+sudo vi /etc/bash.bashrc 
+exec bash
+cd git/
+cd ansible_101/
+sudo vi /etc/profile
+exec bash
+gs
+ga .
+cd
+cp .bashrc .bashrc.orig
+vi .bashrc
+exec bash
+cd git/ansible_101/
+exit
+cd git/ansible_101/
+vi .bashrc
+exec bash
+cd git/ansible_101/
+gs
+cd
+vi .bashrc
+exec bash
+cd git/ansible_101/
+gs
+gc -m "Initial commit."
+git push
+cd chapter2/
+cd ..
+
+
+
+
+mkdir chapter3
+cd chapter
+cd chapter3/
+ll
+vagrant init geerlingguy/centos7
+code .
+vagrant up
+vagrant up
+vagrant up
+vagrant up
+gs
+cat inventory 
+vagrant ssh app1
+vagrant ssh db
+ansible multi -m ping
+ansible multi -i inventory -m ping
+ansible multi -i inventory -a "hostname"
+ansible all -i inventory -a "hostname"
+ansible all -i inventory -a "hostname"
+ansible all -i inventory -a "hostname"
+ansible all -i inventory -a -m ping
+ansible all -i inventory -m ping
+ansible all -i inventory -a "hostname"
+ansible all -i inventory -a "hostname"
+ansible all -i inventory -a "hostname"
+ansible all -i inventory -a "hostname" -f 1
+ansible all -i inventory -a "hostname" -f 10
+ga .
+gc -m "more ad-hoc commands"
+cd .vagrant/
+cd ..
+ansible all -i inventory -a "df -h" -f 10
+ansible all -i inventory -a "hostname && df -h" -f 10
+ansible all -i inventory -a -m shell "hostname && df -h" -f 10
+ansible all -i inventory -a -m shell "hostname && df -h"
+ansible -i inventory all -a -m shell "hostname && df -h"
+ansible -i inventory all -m shell "hostname && df -h"
+ansible -i inventory all -a -m shell "hostname && df -h"
+ansible -i inventory all -m shell -a "hostname && df -h"
+ansible -i inventory db -m setup
+ansible -i inventory all -b -m yum "name=ntp state=present"
+ansible -i inventory all -b -m yum -a "name=ntp state=present"
+grep -i vagrant /etc/sudoers
+sudo grep -i vagrant /etc/sudoers
+sudo grep -i vagrant /etc/sudoers.d/99-snapd.conf 
+grep -i vagrant /etc/group
+ansible -i inventory all -b -m service -a "name=ntpd state=started enabled=yes"
+ansible -i inventory all -b -a "service ntpd stop"
+ansible -i inventory all -b -a "ntpdate -q 0.rhel.pool.ntp.org"
+ansible -i inventory all -b -a "service ntpd start"
+ansible -i inventory db -b -a "free -m"
+ansible -i inventory app -b -a "free -m"
