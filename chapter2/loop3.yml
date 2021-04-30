@@ -1,0 +1,10 @@
+---
+  - name: "reference {{ obj }} from outer loop"
+    lineinfile:
+      path: "{{ obj }}"
+      regexp: "{{ item.regexp }}"
+      state: absent
+    with_items:
+      - { regexp: '# sudo' }
+      - { regexp: '# omar' }
+      - { regexp: '# luis' }

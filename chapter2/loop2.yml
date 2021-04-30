@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: "find files"
+      find:
+        paths: /etc/tests/
+        file_type: file
+        patterns: "*"
+      register: files_matched
+
+    - name: remove lines
+      include: loop3.yml obj={{ outer_item.path }}
+      with_items:
+        - "{{ files_matched.files }}"
+      loop_control:
+        label: "{{ outer_item.path }}"
+        loop_var: outer_item

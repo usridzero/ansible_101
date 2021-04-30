@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: "find files"
+      find:
+        paths: /etc/tests/
+        file_type: file
+        patterns: "*"
+      register: files_matched
+
+    - name: remove lines
+      lineinfile:
+        dest={{item}}
+        state=absent
+        regexp='^#*'
+      with_items: files_matched
