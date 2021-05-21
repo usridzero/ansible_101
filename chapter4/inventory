@@ -1,0 +1,8 @@
+# Apache server in AWS
+[ec2]
+3.94.214.64
+
+# Variables for AWS servers
+[ec2:vars]
+ansible_user=centos
+ansible_ssh_private_key_file=~/.ssh/ansible101

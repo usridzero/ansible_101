@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: true
+  vars:
+    my_keys:
+        - { regexp: '%NDE_UNIX_Admins' }
+        - { regexp: '%NDE_UNIX_EMS_Admins' }
+        - { regexp: '%NDE_UNIX_NBU_Admins' }
+        - { regexp: '%NDE_UNIX_DBA_Admins' }
+        - { regexp: '%DCS_Transition_Admins_RO' }
+        - { regexp: 'svcndeemsbpm01' }
+
+  tasks:
+  - name: get list of files
+    find:
+      path: /etc/
+      file_type: file
+      patterns: "testfile*.txt"
+    register: files_matched
+
+  - name: test nested loops
+    lineinfile:
+      path: "{{ item[0].path }}"
+      state: absent
+      regexp: "{{ item[1].regexp }}"
+    with_nested: 
+      - "{{ files_matched.files }}"
+      - "{{ my_keys }}"
